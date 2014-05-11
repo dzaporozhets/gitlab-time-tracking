@@ -11,6 +11,9 @@
     .navbar.navbar-inverse.navbar-static-top
       .container
         .navbar-header
-          %a{:hred => '#', :class => 'navbar-brand'} GitLab Time Tracking
+          %a{:href => '/', :class => 'navbar-brand'} GitLab Time Tracking
+        %ul.nav.navbar-nav.navbar-right
+          %li
+            %a{:href => '/login'} Login
     .container
       = yield

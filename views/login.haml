@@ -1,0 +1,21 @@
+%form#new_user_session.form-horizontal.form-signin{"accept-charset" => "UTF-8", action: "/user_sessions", method: "post"}
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %h2
+        Sign in
+        %small with GitLab account
+  .form-group
+    %label.col-sm-2.control-label Login or Email
+    .col-sm-10
+      %input#user_session_email.form-control{name: "user_session[email]", type: "text"}/
+  .form-group
+    %label.col-sm-2.control-label Password
+    .col-sm-10
+      %input#user_session_password.form-control{name: "user_session[password]", type: "password"}/
+  .form-group
+    %label.col-sm-2.control-label GitLab url
+    .col-sm-10
+      %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/"}/
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %input.btn.btn-success{name: "commit", type: "submit", value: "Sign in"}/

@@ -22,8 +22,13 @@ class GitLabTimeTracking < Sinatra::Base
   get '/' do
     authenticate_user!
 
-    @day_from = 1.weeks.ago.to_date
-    @day_to = Date.today
+    @day_to = if params[:day_to]
+                params[:day_to].to_date
+              else
+                Date.today
+              end
+
+    @day_from = @day_to - 1.week
     @time_logs = TimeLog.where(user_id: current_user.id).where("day >= ? AND day <= ?", @day_from, @day_to)
     @days = (@day_from..@day_to).to_a
 

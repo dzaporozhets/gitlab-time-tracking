@@ -3,7 +3,11 @@
   .pull-right
     = link_to 'Log time', 'log_time', class: 'btn btn-success btn-sm'
 %p
-  From #{@day_from.strftime("%b %d")} to #{@day_to.strftime("%b %d")}
+  = link_to '&larr; Prev', '/?day_to=' + (@day_to - 1.week).to_s, class: 'btn btn-xs btn-default'
+  &nbsp;
+  From #{@day_from.strftime("%b %d")} to #{@day_to.strftime("%b %d")}.
+  &nbsp;
+  = link_to 'Next &rarr;', '/?day_to=' + (@day_to + 1.week).to_s, class: 'btn btn-xs btn-default'
 
 %table.table.table-striped.table-bordered
   %thead

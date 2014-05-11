@@ -1,0 +1,9 @@
+# GitLab Time Tracking
+
+Time tracking app for GitLab 
+
+
+Start in development: 
+
+    shotgun -p 4567
+

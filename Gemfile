@@ -9,6 +9,11 @@ gem 'haml'
 gem 'sass'
 gem 'compass'
 
+# Database
+gem "pg"
+gem "activerecord"
+gem "sinatra-activerecord"
+
 group :test do
   gem 'rspec'
   gem 'capybara'

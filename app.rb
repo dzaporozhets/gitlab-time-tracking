@@ -56,10 +56,14 @@ class GitLabTimeTracking < Sinatra::Base
   end
 
   get '/log_time' do
+    authenticate_user!
+
     haml :log_time
   end
 
   post '/create_time_log' do
+    authenticate_user!
+
     time_log = TimeLog.new(params['time_log'])
     time_log.user_id = current_user.id
 

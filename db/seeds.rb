@@ -1,4 +1,4 @@
-if ENV['seeds']
+if ENV['RACK_ENV'] = 'development'
   dates = (1.weeks.ago.to_date..Date.today).to_a
   times = [0.5, 1, 1.5, 2, 4]
   projects = [1,2,3]

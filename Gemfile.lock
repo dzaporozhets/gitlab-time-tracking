@@ -30,6 +30,8 @@ GEM
       sass (~> 3.2.19)
     diff-lcs (1.2.5)
     fssm (0.2.10)
+    gitlab (3.0.0)
+      httparty
     haml (4.0.5)
       tilt
     httparty (0.13.1)
@@ -88,6 +90,7 @@ DEPENDENCIES
   activerecord
   capybara
   compass
+  gitlab
   haml
   httparty
   pg

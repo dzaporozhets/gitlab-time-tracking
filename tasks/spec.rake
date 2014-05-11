@@ -7,5 +7,6 @@ RSpec::Core::RakeTask.new do |task|
 end
 
 task :test do
+  Rake::Task["db:setup"].invoke
   Rake::Task["spec"].invoke
 end

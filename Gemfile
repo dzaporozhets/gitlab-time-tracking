@@ -15,6 +15,9 @@ gem "pg"
 gem "activerecord"
 gem "sinatra-activerecord"
 
+# GitLab API
+gem 'gitlab'
+
 group :test do
   gem 'rspec'
   gem 'capybara'

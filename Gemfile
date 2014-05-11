@@ -4,6 +4,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'shotgun'
 gem 'haml'
+gem 'httparty'
 
 # Sass & Compass
 gem 'sass'

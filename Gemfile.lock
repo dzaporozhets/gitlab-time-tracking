@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/NARKOZ/gitlab.git
+  revision: b7fc447211fe281e01f111f8a9fad08396fdfa4d
+  specs:
+    gitlab (3.0.0)
+      httparty
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,8 +37,6 @@ GEM
       sass (~> 3.2.19)
     diff-lcs (1.2.5)
     fssm (0.2.10)
-    gitlab (3.0.0)
-      httparty
     haml (4.0.5)
       tilt
     httparty (0.13.1)
@@ -90,7 +95,7 @@ DEPENDENCIES
   activerecord
   capybara
   compass
-  gitlab
+  gitlab!
   haml
   httparty
   pg

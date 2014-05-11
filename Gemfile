@@ -16,7 +16,7 @@ gem "activerecord"
 gem "sinatra-activerecord"
 
 # GitLab API
-gem 'gitlab'
+gem 'gitlab', git: 'https://github.com/NARKOZ/gitlab.git'
 
 group :test do
   gem 'rspec'

@@ -107,8 +107,12 @@ class GitLabTimeTracking < Sinatra::Base
       sprintf gravatar_url, hash: Digest::MD5.hexdigest(user_email.downcase), size: size
     end
 
-    def link_to(title, path, opts)
+    def link_to(title, path, opts={})
       "<a href='#{path}' class='#{opts[:class]}'>#{title}</a>"
+    end
+
+    def issue_url(project, id)
+      project.web_url + '/issues/' + id.to_s
     end
   end
 

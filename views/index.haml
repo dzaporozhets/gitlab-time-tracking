@@ -19,9 +19,10 @@
 
   %tbody
     - @time_logs.group_by(&:project_id).each do |project_logs|
+      - project = current_user.project(project_logs[0])
       %tr
         %td
-          %strong #{current_user.project(project_logs[0]).name_with_namespace}
+          %strong #{project.name_with_namespace}
         - @days.each do |date|
           %td.clight
             - time = project_logs[1].inject(0) { |sum, x| sum + (x.day == date ? x.time : 0) }
@@ -31,7 +32,7 @@
       - project_logs[1].group_by(&:issue_iid).each do |logs|
         %tr
           %td
-            &nbsp; Issue ##{logs[0]}
+            &nbsp; Issue #{link_to "#" + logs[0].to_s, issue_url(project, logs[0])}
           - @days.each do |date|
             %td
               - time = logs[1].inject(0) { |sum, x| sum + (x.day == date ? x.time : 0) }

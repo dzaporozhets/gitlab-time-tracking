@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140511101738) do
     t.text     "comment"
     t.integer  "issue_iid"
     t.integer  "project_id"
+    t.integer  "user_id"
     t.date     "day"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -24,7 +24,7 @@ class GitLabTimeTracking < Sinatra::Base
 
     @day_from = 1.weeks.ago.to_date
     @day_to = Date.today
-    @time_logs = TimeLog.where("day >= ? AND day <= ?", @day_from, @day_to)
+    @time_logs = TimeLog.where(user_id: current_user.id).where("day >= ? AND day <= ?", @day_from, @day_to)
     @days = (@day_from..@day_to).to_a
 
     haml :index
@@ -61,11 +61,12 @@ class GitLabTimeTracking < Sinatra::Base
 
   post '/create_time_log' do
     time_log = TimeLog.new(params['time_log'])
+    time_log.user_id = current_user.id
 
     if time_log.save
       redirect '/'
     else
-      haml :login
+      haml :log_time
     end
   end
 

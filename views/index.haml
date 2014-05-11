@@ -24,7 +24,9 @@
           %strong Project #{project_logs[0]}
         - @days.each do |date|
           %td.clight
-            = @time_logs.where(project_id: project_logs[0], day: date).sum(:time)
+            - time = project_logs[1].inject(0) { |sum, x| sum + (x.day == date ? x.time : 0) }
+            - unless time.zero?
+              = time
 
       - project_logs[1].group_by(&:issue_iid).each do |logs|
         %tr

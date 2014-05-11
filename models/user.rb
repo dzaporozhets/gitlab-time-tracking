@@ -3,11 +3,11 @@ class User
 
   def self.authenticate(params)
     url = params.delete('url')
-
-    response = Network.new.authenticate(url, params)
+    client = Gitlab.client(endpoint: url + '/api/v3/')
+    response = client.session(params['email'], params['password'])
 
     if response
-      User.new(response.merge("url" => url))
+      User.new(response.to_hash.merge("url" => url))
     end
   end
 
@@ -21,5 +21,14 @@ class User
     else
       super
     end
+  end
+
+  def projects
+    client = Gitlab.client(endpoint: self.url + '/api/v3/', private_token: self.private_token)
+    client.projects
+  end
+
+  def to_hash
+    @attributes
   end
 end

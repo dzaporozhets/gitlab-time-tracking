@@ -18,7 +18,9 @@
   .form-group
     %label.col-sm-2.control-label Project ID
     .col-sm-10
-      %input.form-control{name: "time_log[project_id]", type: "text"}/
+      %select.form-control{name: "time_log[project_id]"}
+        - @projects.each do |project|
+          %option{value: project.id}= project.name_with_namespace
   .form-group
     %label.col-sm-2.control-label Comment
     .col-sm-10

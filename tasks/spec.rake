@@ -7,6 +7,7 @@ RSpec::Core::RakeTask.new do |task|
 end
 
 task :test do
+  ENV['RACK_ENV'] = 'test'
   Rake::Task["db:setup"].invoke
   Rake::Task["spec"].invoke
 end

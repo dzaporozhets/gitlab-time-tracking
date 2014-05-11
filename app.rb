@@ -4,6 +4,7 @@ require 'rubygems'
 require 'sinatra/base'
 require "sinatra/reloader"
 require 'haml'
+require 'gitlab'
 
 class GitLabTimeTracking < Sinatra::Base
   configure :development do
@@ -15,7 +16,6 @@ class GitLabTimeTracking < Sinatra::Base
 
   require 'sinatra/activerecord'
   require './helpers/render_partial'
-  require './lib/network'
   require './models/user'
   require './models/time_log'
 
@@ -58,6 +58,8 @@ class GitLabTimeTracking < Sinatra::Base
   get '/log_time' do
     authenticate_user!
 
+    @projects = current_user.projects
+
     haml :log_time
   end
 
@@ -79,13 +81,13 @@ class GitLabTimeTracking < Sinatra::Base
     def current_user
       @current_user ||= begin
                           if session[:current_user]
-                            Marshal.load(session[:current_user])
+                            User.new(Marshal.load(session[:current_user]))
                           end
                         end
     end
 
     def sign_in(user)
-      session[:current_user] = Marshal.dump user
+      session[:current_user] = Marshal.dump user.to_hash
     end
 
     def sign_out

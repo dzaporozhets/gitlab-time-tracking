@@ -13,7 +13,13 @@
         .navbar-header
           %a{:href => '/', :class => 'navbar-brand'} GitLab Time Tracking
         %ul.nav.navbar-nav.navbar-right
-          %li
-            %a{:href => '/login'} Login
+          - if current_user
+            %li
+              %a{:href => '/profile'} #{current_user.name}
+            %li
+              %a{:href => '/logout'} Logout
+          - else
+            %li
+              %a{:href => '/login'} Login
     .container
       = yield

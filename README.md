@@ -9,7 +9,7 @@ Setup database:
     vim config/database.yml
 
 
-Start in development: 
+Start app: 
 
-    shotgun -p 4567
+    rake s
 

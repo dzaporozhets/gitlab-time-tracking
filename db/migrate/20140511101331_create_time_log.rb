@@ -5,6 +5,7 @@ class CreateTimeLog < ActiveRecord::Migration
       t.text :comment
       t.integer :issue_iid
       t.integer :project_id
+      t.timestamps
     end
   end
 end

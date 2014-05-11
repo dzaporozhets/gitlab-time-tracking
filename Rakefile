@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler'
 require 'rake'
+require "./app"
 require "sinatra/activerecord/rake"
 Bundler.setup
 

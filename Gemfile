@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem 'rake'
 gem 'sinatra'
-gem 'shotgun'
+gem 'sinatra-contrib'
 gem 'haml'
 gem 'httparty'
 

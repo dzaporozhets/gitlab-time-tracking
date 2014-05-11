@@ -8,4 +8,9 @@
     %script{:type => "text/javascript", :src => "//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"}
     %script{:type => "text/javascript", :src => "/javascripts/application.js"}
   %body
-    = yield
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %a{:hred => '#', :class => 'navbar-brand'} GitLab Time Tracking
+    .container
+      = yield

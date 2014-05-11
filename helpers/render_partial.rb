@@ -4,4 +4,6 @@ module RenderPartial
   end
 end
 
-helpers RenderPartial
+if respond_to?(:helpers)
+  helpers RenderPartial
+end

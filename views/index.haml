@@ -1,1 +1,44 @@
-%h1 Dashboard
+%h2
+  Dashboard
+%p
+  From #{@day_from.strftime("%b %d")} to #{@day_to.strftime("%b %d")}
+
+
+
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th
+      - @days.each do |date|
+        %th= date.strftime("%b %d")
+    %tr
+      %th Issues
+      - @days.each do |date|
+        %th{class: (date.saturday? || date.sunday?) ? 'alert alert-warning' : 'alert alert-success'}
+          = date.strftime("%a")
+
+  %tbody
+    - @time_logs.group_by(&:project_id).each do |project_logs|
+      %tr
+        %td
+          %strong Project #{project_logs[0]}
+        - @days.each do |date|
+          %td.clight
+            = @time_logs.where(project_id: project_logs[0], day: date).sum(:time)
+
+      - project_logs[1].group_by(&:issue_iid).each do |logs|
+        %tr
+          %td
+            &nbsp; Issue ##{logs[0]}
+          - @days.each do |date|
+            %td
+              - time = logs[1].inject(0) { |sum, x| sum + (x.day == date ? x.time : 0) }
+              - unless time.zero?
+                = time
+    %tr
+      %td
+        %strong Total
+      - @days.each do |date|
+        %td
+          %strong
+            = @time_logs.where(day: date).sum(:time)

@@ -2,19 +2,30 @@ APP_ROOT = File.dirname(__FILE__)
 
 require 'rubygems'
 require 'sinatra/base'
+require "sinatra/reloader"
 require 'haml'
 
 class GitLabTimeTracking < Sinatra::Base
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   set :database_file, "#{APP_ROOT}/config/database.yml"
   set :sessions, true
 
+  require 'sinatra/activerecord'
   require './helpers/render_partial'
   require './lib/network'
   require './models/user'
-  require 'sinatra/activerecord'
+  require './models/time_log'
 
   get '/' do
     authenticate_user!
+
+    @day_from = 1.weeks.ago.to_date
+    @day_to = Date.today
+    @time_logs = TimeLog.where("day >= ? AND day <= ?", @day_from, @day_to)
+    @days = (@day_from..@day_to).to_a
 
     haml :index
   end

@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'haml'
 
-class SinatraBootstrap < Sinatra::Base
+class GitLabTimeTracking < Sinatra::Base
   require './helpers/render_partial'
 
   get '/' do

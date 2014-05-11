@@ -55,6 +55,21 @@ class GitLabTimeTracking < Sinatra::Base
     end
   end
 
+  get '/log_time' do
+    haml :log_time
+  end
+
+  post '/create_time_log' do
+    time_log = TimeLog.new(params['time_log'])
+
+    if time_log.save
+      redirect '/'
+    else
+      haml :login
+    end
+  end
+
+
   helpers do
     def current_user
       @current_user ||= begin
@@ -83,6 +98,10 @@ class GitLabTimeTracking < Sinatra::Base
       gravatar_url ||= 'https://secure.gravatar.com/avatar/%{hash}?s=%{size}&d=mm'
       user_email.strip!
       sprintf gravatar_url, hash: Digest::MD5.hexdigest(user_email.downcase), size: size
+    end
+
+    def link_to(title, path, opts)
+      "<a href='#{path}' class='#{opts[:class]}'>#{title}</a>"
     end
   end
 

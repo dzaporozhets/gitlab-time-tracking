@@ -1,0 +1,28 @@
+%form.form-horizontal{"accept-charset" => "UTF-8", action: "/create_time_log", method: "post"}
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %h2
+        Log time
+  .form-group
+    %label.col-sm-2.control-label Time
+    .col-sm-10
+      %input.form-control{name: "time_log[time]", type: "text"}/
+  .form-group
+    %label.col-sm-2.control-label Day
+    .col-sm-10
+      %input#datepicker.form-control{name: "time_log[day]", type: "text"}/
+  .form-group
+    %label.col-sm-2.control-label Issue iid
+    .col-sm-10
+      %input.form-control{name: "time_log[issue_iid]", type: "number"}/
+  .form-group
+    %label.col-sm-2.control-label Project ID
+    .col-sm-10
+      %input.form-control{name: "time_log[project_id]", type: "text"}/
+  .form-group
+    %label.col-sm-2.control-label Comment
+    .col-sm-10
+      %input.form-control{name: "time_log[comment]", type: "text"}/
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %input.btn.btn-success{name: "commit", type: "submit", value: "Log time"}/

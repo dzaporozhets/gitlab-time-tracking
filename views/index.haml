@@ -1,9 +1,9 @@
 %h2
   Dashboard
+  .pull-right
+    = link_to 'Log time', 'log_time', class: 'btn btn-success btn-sm'
 %p
   From #{@day_from.strftime("%b %d")} to #{@day_to.strftime("%b %d")}
-
-
 
 %table.table.table-striped.table-bordered
   %thead

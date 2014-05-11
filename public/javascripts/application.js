@@ -7,4 +7,5 @@ $(document).ready(function() {
 	  .addClass('link external')
 	  .attr('target', '_blank');
 
+  $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
 });

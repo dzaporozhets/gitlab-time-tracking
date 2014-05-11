@@ -21,7 +21,7 @@
     - @time_logs.group_by(&:project_id).each do |project_logs|
       %tr
         %td
-          %strong Project #{project_logs[0]}
+          %strong #{current_user.project(project_logs[0]).name_with_namespace}
         - @days.each do |date|
           %td.clight
             - time = project_logs[1].inject(0) { |sum, x| sum + (x.day == date ? x.time : 0) }

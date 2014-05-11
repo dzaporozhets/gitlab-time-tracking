@@ -28,6 +28,11 @@ class User
     client.projects
   end
 
+  def project(id)
+    client = Gitlab.client(endpoint: self.url + '/api/v3/', private_token: self.private_token)
+    client.project(id)
+  end
+
   def to_hash
     @attributes
   end

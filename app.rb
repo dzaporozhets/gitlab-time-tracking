@@ -14,7 +14,15 @@ class GitLabTimeTracking < Sinatra::Base
   require 'sinatra/activerecord'
 
   get '/' do
+    authenticate_user!
+
     haml :index
+  end
+
+  get '/profile' do
+    authenticate_user!
+
+    haml :profile
   end
 
   get '/login' do
@@ -58,6 +66,12 @@ class GitLabTimeTracking < Sinatra::Base
         redirect '/login'
         return
       end
+    end
+
+    def gravatar_icon(user_email = '', size = 40)
+      gravatar_url ||= 'https://secure.gravatar.com/avatar/%{hash}?s=%{size}&d=mm'
+      user_email.strip!
+      sprintf gravatar_url, hash: Digest::MD5.hexdigest(user_email.downcase), size: size
     end
   end
 

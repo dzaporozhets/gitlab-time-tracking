@@ -1,0 +1,17 @@
+%img{src: gravatar_icon(current_user.email, 120), class: 'img-polaroid'}
+%h3
+  Hi, #{current_user.name}
+
+  - if current_user.is_admin
+    %span.label.label-success Admin
+
+.profile-block
+  %p
+    %span.light Email:
+    %strong= current_user.email
+
+  %p
+    %span.light GitLab profile:
+    %strong
+      %a{href: (current_user.url + '/u/' + current_user.username), target: "_blank"}
+        = current_user.username

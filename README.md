@@ -66,7 +66,7 @@ Create tmp and log dirs
 
 Start unicorn: 
 
-    unicorn -c config/unicorn.rb -E development -D
+    bundle exec rake unicorn:production
 
 Install nginx:
 

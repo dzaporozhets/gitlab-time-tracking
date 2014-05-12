@@ -1,5 +1,4 @@
 namespace :css do
-
   desc "Clear the CSS"
   task :clear => ["compile:clear"]
 
@@ -7,7 +6,6 @@ namespace :css do
   task :compile => ["compile:default"]
 
   namespace :compile do
-
     task :clear do
       puts "*** Clearing CSS ***"
       system "rm -Rfv public/stylesheets/*"
@@ -23,7 +21,5 @@ namespace :css do
       puts "*** Compiling CSS ***"
       system "compass compile --output-style compressed --force"
     end
-
   end
-
 end

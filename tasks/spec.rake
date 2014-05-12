@@ -6,6 +6,7 @@ RSpec::Core::RakeTask.new do |task|
   task.pattern    = 'spec/**/*_spec.rb'
 end
 
+desc 'Run all tests'
 task :test do
   ENV['RACK_ENV'] = 'test'
   Rake::Task["db:setup"].invoke

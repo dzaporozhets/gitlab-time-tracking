@@ -18,6 +18,9 @@ gem "sinatra-activerecord"
 # GitLab API
 gem 'gitlab', git: 'https://github.com/NARKOZ/gitlab.git'
 
+# Web server
+gem 'unicorn'
+
 group :test do
   gem 'rspec'
   gem 'capybara'

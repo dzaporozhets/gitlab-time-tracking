@@ -75,7 +75,7 @@ Install nginx:
 
 Setup nginx `http` section:
 
-   # use the socket we configured in our unicorn.rb
+    # use the socket we configured in our unicorn.rb
     upstream unicorn_server {
       server unix:/path/to/app/tmp/sockets/unicorn.sock
           fail_timeout=0;

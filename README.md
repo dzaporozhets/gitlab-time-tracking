@@ -2,6 +2,7 @@
 
 Time tracking app for GitLab 
 
+![Screenshot](screenshot.png)
 
 ## Requirements: 
 

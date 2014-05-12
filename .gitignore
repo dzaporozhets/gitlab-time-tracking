@@ -4,3 +4,4 @@
 tmp/**/*
 log/**/*
 config/database.yml
+.secret

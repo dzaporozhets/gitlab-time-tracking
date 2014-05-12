@@ -5,6 +5,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'haml'
 gem 'httparty'
+gem 'encrypted_cookie'
 
 # Sass & Compass
 gem 'sass'

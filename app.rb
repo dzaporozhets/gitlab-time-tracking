@@ -1,18 +1,28 @@
 APP_ROOT = File.dirname(__FILE__)
+SECRET = File.join(APP_ROOT, '.secret')
 
 require 'rubygems'
 require 'sinatra/base'
 require "sinatra/reloader"
 require 'haml'
 require 'gitlab'
+require 'encrypted_cookie'
+require 'securerandom'
 
 class GitLabTimeTracking < Sinatra::Base
+  # Create .secret file for EncryptedCookie
+  unless File.exists?(SECRET)
+    File.open(SECRET, 'w') { |file| file.write(SecureRandom.hex(32)) }
+  end
+
+  use Rack::Session::EncryptedCookie,
+    secret: File.read(File.join(APP_ROOT, '.secret')).strip
+
   configure :development do
     register Sinatra::Reloader
   end
 
   set :database_file, "#{APP_ROOT}/config/database.yml"
-  set :sessions, true
 
   require 'sinatra/activerecord'
   require './helpers/render_partial'

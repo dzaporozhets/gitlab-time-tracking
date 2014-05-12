@@ -36,6 +36,7 @@ GEM
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
     diff-lcs (1.2.5)
+    encrypted_cookie (0.0.4)
     fssm (0.2.10)
     haml (4.0.5)
       tilt
@@ -101,6 +102,7 @@ DEPENDENCIES
   activerecord
   capybara
   compass
+  encrypted_cookie
   gitlab!
   haml
   httparty

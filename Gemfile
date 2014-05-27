@@ -17,7 +17,7 @@ gem "activerecord"
 gem "sinatra-activerecord"
 
 # GitLab API
-gem 'gitlab', git: 'https://github.com/NARKOZ/gitlab.git'
+gem 'gitlab'
 
 # Web server
 gem 'unicorn'

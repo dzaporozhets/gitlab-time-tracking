@@ -34,7 +34,7 @@ class User
 
   def projects
     client = Gitlab.client(endpoint: self.url + '/api/v3/', private_token: self.private_token)
-    client.projects
+    client.projects(per_page: 100)
   end
 
   def project(id)

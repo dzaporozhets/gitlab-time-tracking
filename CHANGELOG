@@ -1,3 +1,7 @@
+v1.2.0
+  - Get 100 gitlab projects instead of 20
+  - Update gitlab api gem
+
 v1.1.0
   - Show error message if wrong login/password
   - Add required attribute to login form

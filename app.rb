@@ -1,6 +1,9 @@
 APP_ROOT = File.dirname(__FILE__)
 SECRET = File.join(APP_ROOT, '.secret')
 
+# Change this to restrict login with one instance
+GITLAB_SERVER = nil# Ex. 'http://demo.gitlab.com'
+
 require 'rubygems'
 require 'sinatra/base'
 require "sinatra/reloader"

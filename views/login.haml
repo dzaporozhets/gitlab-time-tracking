@@ -18,7 +18,10 @@
   .form-group
     %label.col-sm-2.control-label GitLab url
     .col-sm-10
-      %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/", required: true}/
+      - if GITLAB_SERVER
+        %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/", disabled: true, value: GITLAB_SERVER}/
+      - else
+        %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/", required: true}/
   .form-group
     .col-sm-offset-2.col-sm-10
       %input.btn.btn-success{name: "commit", type: "submit", value: "Sign in"}/

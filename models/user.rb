@@ -2,7 +2,11 @@ class User
   attr_reader :attributes
 
   def self.authenticate(params)
-    url = params.delete('url')
+    if GITLAB_SERVER
+      url = GITLAB_SERVER
+    else
+      url = params.delete('url')
+    end
 
     unless url =~ URI::regexp
       raise URI::InvalidURIError

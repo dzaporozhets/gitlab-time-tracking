@@ -1,0 +1,6 @@
+v1.1.0
+  - Show error message if wrong login/password
+  - Add required attribute to login form
+  - Show error message when server url is invalid
+  - Fixed nginx config example
+  - Add ability to restrict GitLab server for login

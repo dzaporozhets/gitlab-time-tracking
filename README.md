@@ -77,7 +77,7 @@ Setup nginx `http` section:
 
     # use the socket we configured in our unicorn.rb
     upstream unicorn_server {
-      server unix:/path/to/app/tmp/sockets/unicorn.sock
+      server unix:/path/to/app/tmp/sockets/unicorn.sock;
     }
 
     # configure the virtual host

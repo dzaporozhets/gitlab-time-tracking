@@ -4,18 +4,21 @@
       %h2
         Sign in
         %small with GitLab account
+      - if @error
+        .alert.alert-danger
+          = @error
   .form-group
     %label.col-sm-2.control-label Login or Email
     .col-sm-10
-      %input#user_session_email.form-control{name: "user_session[email]", type: "text"}/
+      %input#user_session_email.form-control{name: "user_session[email]", type: "text", required: true}/
   .form-group
     %label.col-sm-2.control-label Password
     .col-sm-10
-      %input#user_session_password.form-control{name: "user_session[password]", type: "password"}/
+      %input#user_session_password.form-control{name: "user_session[password]", type: "password", required: true}/
   .form-group
     %label.col-sm-2.control-label GitLab url
     .col-sm-10
-      %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/"}/
+      %input#user_session_url.form-control{name: "user_session[url]", type: "text", placeholder: "https://gitlab.com/", required: true}/
   .form-group
     .col-sm-offset-2.col-sm-10
       %input.btn.btn-success{name: "commit", type: "submit", value: "Sign in"}/

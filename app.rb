@@ -61,7 +61,13 @@ class GitLabTimeTracking < Sinatra::Base
   end
 
   post '/user_sessions' do
-    user = User.authenticate(params[:user_session])
+    begin
+      user = User.authenticate(params[:user_session])
+    rescue Gitlab::Error::Unauthorized
+      @error = "Wrong login or password"
+    rescue URI::InvalidURIError
+      @error = "Wrong server url"
+    end
 
     if user && sign_in(user)
       redirect '/'

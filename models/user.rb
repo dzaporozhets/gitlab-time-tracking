@@ -3,6 +3,11 @@ class User
 
   def self.authenticate(params)
     url = params.delete('url')
+
+    unless url =~ URI::regexp
+      raise URI::InvalidURIError
+    end
+
     client = Gitlab.client(endpoint: url + '/api/v3/')
     response = client.session(params['email'], params['password'])
 
